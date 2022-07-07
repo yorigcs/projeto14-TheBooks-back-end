@@ -11,6 +11,7 @@ const validateSignUp = async (req, res, next) => {
         if (isRegistered) {
             return res.status(400).send("O usuário já existe!");
         }
+        res.locals.signUpData = { name, password, email, cpf };
         next();
 
     } catch (err) {
