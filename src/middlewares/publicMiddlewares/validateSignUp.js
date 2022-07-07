@@ -2,7 +2,7 @@ import mongoDB from "../../database/mongoDB.js"
 import { signUpSchema } from "../../schemas/schema.js"
 const validateSignUp = async (req, res, next) => {
     const { name, password, email, cpf } = req.body;
-    if (signUpSchema.validate(name, password, email, cpf).error) {
+    if (signUpSchema.validate({name, password, email, cpf}).error) {
         return res.status(422).send("Dados inválidos!")
     }
 
