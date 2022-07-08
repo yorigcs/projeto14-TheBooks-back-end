@@ -1,8 +1,9 @@
 import mongoDB from "../../database/mongoDB.js"
 import { signUpSchema } from "../../schemas/schema.js"
+import bcrypt from "bcrypt";
 const validateSignUp = async (req, res, next) => {
     const { name, password, email, cpf } = req.body;
-    if (signUpSchema.validate({name, password, email, cpf}).error) {
+    if (signUpSchema.validate({ name, password, email, cpf }).error) {
         return res.status(422).send("Dados inválidos!")
     }
 
@@ -11,7 +12,8 @@ const validateSignUp = async (req, res, next) => {
         if (isRegistered) {
             return res.status(400).send("O usuário já existe!");
         }
-        res.locals.signUpData = { name, password, email, cpf };
+        const encryptedPassword = bcrypt.hashSync(password, 10);
+        res.locals.signUpData = { name, password: encryptedPassword, email, cpf };
         next();
 
     } catch (err) {
