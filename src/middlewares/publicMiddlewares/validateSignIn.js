@@ -13,6 +13,8 @@ const validateSignIn = async (req, res, next) => {
             return res.status(422).send("Senha ou email incorretos!")
         }
         next();
+        
+        res.locals.userData = { name: isRegistered.name, email };
 
     } catch (err) {
         console.error(err)
