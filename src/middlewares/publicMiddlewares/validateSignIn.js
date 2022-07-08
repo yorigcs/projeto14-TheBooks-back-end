@@ -6,7 +6,7 @@ const validateSignIn = async (req, res, next) => {
     try {
         const isRegistered = await mongoDB.collection("users").findOne({ email });
         if (!isRegistered) {
-            return res.status(422).send("O usuário não está registrado, cadastre uma nova conta!")
+            return res.status(422).send("Usuário não registrado!")
         }
         const isValidPassword = bcrypt.compareSync(password, isRegistered.password)
         if (!isValidPassword) {
