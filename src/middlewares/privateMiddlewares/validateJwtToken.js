@@ -5,7 +5,7 @@ const SECRET = process.env.SECRET_KEY || "!5S5G6$1AE@";
 
 const validateJwtToken = (req, res, next) => {
  const token = req.header("Authorization")?.replace("Bearer ","");
- const { user } = req.body;
+ const { email } = req.body;
  try {
     const decodedToken = jwt.verify(token, SECRET)
     if (user !== decodedToken.email) {
