@@ -4,7 +4,7 @@ const signUpController = async (req, res) => {
     const { signUpData } = res.locals;
     try {
         await mongoDB.collection('users').insertOne(signUpData);
-        res.send(201);
+        res.sendStatus(201);
 
     } catch (err) {
         console.error(err);

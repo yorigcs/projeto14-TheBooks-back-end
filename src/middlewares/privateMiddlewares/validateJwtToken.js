@@ -13,7 +13,7 @@ const validateJwtToken = (req, res, next) => {
     }
     next();
 } catch (err) {
-    console.log(err)
+    console.log(req.headers)
     return res.status(401).send("Token inválido!")
 }    
 }
