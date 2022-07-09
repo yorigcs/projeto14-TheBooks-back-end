@@ -9,8 +9,8 @@ const validateUpdateProfille = async (req, res, next) => {
         return res.status(422).send("Todos os dados devem ser preenchidos!")
     }
     try {
-        const user = await mongoDB.collectino("users").findOne({ email });
-        if (!bcrypt.compare(oldPassword, user.password)) {
+        const user = await mongoDB.collection("users").findOne({ email });
+        if (!bcrypt.compareSync(oldPassword, user.password)) {
             return res.status(422).send("A senha atual está incorreta!")
         }
         const hashPw = bcrypt.hashSync(newPassword,10);

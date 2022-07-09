@@ -6,7 +6,7 @@ const updateProfileController = async (req, res) => {
     try {
         await mongoDB
             .collection('users')
-            .update({ email: updateData.email }, { $set: { password: updateData.password } })
+            .updateOne({ email: updateData.email }, { $set: { password: updateData.password } })
         res.sendStatus(201)
     } catch (err) {
         console.error(err);

@@ -8,7 +8,7 @@ const validateJwtToken = (req, res, next) => {
  const { email } = req.body;
  try {
     const decodedToken = jwt.verify(token, SECRET)
-    if (user !== decodedToken.email) {
+    if (email !== decodedToken.email) {
         return res.status(401).send("Não autorizado!")
     }
     next();
