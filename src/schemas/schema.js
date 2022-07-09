@@ -7,4 +7,10 @@ const signUpSchema = joi.object({
     email: joi.string().email().required(),
 });
 
-export {signUpSchema}
+
+const updateProfileSchema = joi.object({
+    newPassword: joi.string().required(),
+    oldPassword: joi.string().required(),
+    email: joi.string().email().required(),
+});
+export {signUpSchema, updateProfileSchema}
