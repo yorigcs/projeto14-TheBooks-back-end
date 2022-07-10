@@ -8,7 +8,7 @@ import signUpController from "../controller/signUpController.js";
 import validateSignIn from "../middlewares/publicMiddlewares/validateSignIn.js";
 import createJwtToken from "../middlewares/publicMiddlewares/createJwtToken.js";
 import signInController from "../controller/signInController.js";
-
+import getBookNameController from "../controller/getBookNameController.js";
 const routes = Router();
 
 routes.get("/books",getBooksController)
@@ -18,5 +18,6 @@ routes.get("/mostRatedBooks", getMostRatedBooksController)
 routes.get("/bestSellersBooks", getBestSellersController)
 routes.post("/sign-up", validateSignUp,signUpController)
 routes.post("/sign-in", validateSignIn, createJwtToken, signInController)
+routes.get("/booksName/:name", getBookNameController)
 
 export default routes;
