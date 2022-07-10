@@ -3,7 +3,7 @@ import mongoDB from "../../database/mongoDB.js";
 import { updateProfileSchema } from "../../schemas/schema.js";
 
 const validateUpdateProfille = async (req, res, next) => {
-    const { newPassword, oldPassword, email } = req.body;
+    const { newPassword, oldPassword, user: email } = req.body;
 
     if (updateProfileSchema.validate({ newPassword, oldPassword, email }).error) {
         return res.status(422).send("Todos os dados devem ser preenchidos!")
