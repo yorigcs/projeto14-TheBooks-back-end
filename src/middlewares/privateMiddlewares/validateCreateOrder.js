@@ -5,8 +5,8 @@ const validateCreateOrder = (req, res, next) => {
         return res.status(422).send("Dados incorretos");
     }
 
-    const purshasedAt = dayjs().format("DD-MM-YYYY HH:mm:ss");
-    res.locals.dataOrder = { user, books, purshasedAt };
+    const purchasedAt = dayjs().format("DD-MM-YYYY HH:mm:ss");
+    res.locals.dataOrder = { user, books, purchasedAt };
     next();
 }
 
