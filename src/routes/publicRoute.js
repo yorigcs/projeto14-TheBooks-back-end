@@ -1,4 +1,5 @@
 import { Router } from "express";
+import getAllBooksController from "../controller/getAllBooksController.js"
 import getBooksController from "../controller/getBooksController.js";
 import getMostRatedBooksController from "../controller/getMostRatedBooksController.js";
 import getBestSellersController from "../controller/getBestSellersController.js";
@@ -13,7 +14,7 @@ const routes = Router();
 
 routes.get("/books",getBooksController)
 routes.get("/book/:id", getBookController)
-routes.get("/books", getBooksController)
+routes.get("/allBooks", getAllBooksController)
 routes.get("/mostRatedBooks", getMostRatedBooksController)
 routes.get("/bestSellersBooks", getBestSellersController)
 routes.post("/sign-up", validateSignUp,signUpController)
